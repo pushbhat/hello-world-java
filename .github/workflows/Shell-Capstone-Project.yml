@@ -30,8 +30,8 @@ jobs:
           docker build -t senthilnata1/shell-java-app:0.0.1.Release .
           docker push senthilnata1/shell-java-app:0.0.1.Release
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-container-deploy@v2
-        with:
-          app-name: azure-web-app-shell-java-app
-          images: senthilnata1/shell-java-app:0.0.1.Release
+      # - name: Deploy to Azure Web App
+      #   uses: azure/webapps-container-deploy@v2
+      #   with:
+      #     app-name: azure-web-app-shell-java-app
+      #     images: senthilnata1/shell-java-app:0.0.1.Release
