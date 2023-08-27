@@ -22,12 +22,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-       
+        
       - name: Set up Docker
         uses: azure/docker-login@v1
         with:
@@ -51,9 +46,14 @@ jobs:
     
       - name: Push Docker Image
         run: docker push senthilnata1/shell-java-app:0.0.1.Release
-      
-      # - name: Deploy to Azure Web App
-      #   uses: azure/webapps-container-deploy@v2
-      #   with:
-      #     app-name: azure-web-app-shell-java-app
-      #     images: senthilnata1/shell-java-app:0.0.1.Release
+
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-container-deploy@v2
+        with:
+          app-name: azure-web-app-shell-java-app
+          images: senthilnata1/shell-java-app:0.0.1.Release
